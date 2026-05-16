@@ -5,7 +5,7 @@ import { useSupabaseTable } from "@/hooks/use-supabase-table";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/admin/settings")({
-  component: AdminSettings;
+  component: AdminSettings,
 });
 
 const FIELDS = [
