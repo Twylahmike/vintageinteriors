@@ -19,7 +19,7 @@ export function useSupabaseTable<T = any>(opts: Options) {
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
-    let q: any = supabase.from(table).select(select);
+    let q: any = (supabase as any).from(table).select(select);
     if (filter) q = filter(q);
     if (order) q = q.order(order.column, { ascending: order.ascending ?? true });
     if (limit) q = q.limit(limit);
