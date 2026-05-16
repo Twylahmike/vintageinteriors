@@ -80,10 +80,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Premium handcrafted furniture in Nairobi. Sofas, beds, dining sets, wardrobes. Pay after delivery. Order via WhatsApp.",
       },
       { name: "author", content: "Vintage Furniture & Interior Design" },
-      { property: "og:title", content: "Vintage Furniture & Interior Design" },
-      { property: "og:description", content: "Premium handcrafted furniture — Ongata Rongai, Nairobi." },
+      { property: "og:title", content: "Vintage Furniture & Interior Design | Premium Furniture Nairobi" },
+      { property: "og:description", content: "A premium e-commerce website for luxury furniture and interior design." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Vintage Furniture & Interior Design | Premium Furniture Nairobi" },
+      { name: "description", content: "A premium e-commerce website for luxury furniture and interior design." },
+      { name: "twitter:description", content: "A premium e-commerce website for luxury furniture and interior design." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bde90753-d076-4875-8cb0-c66951b77de5/id-preview-25e3598f--52fe2be1-9e4b-474c-bdfb-752bc33d90cc.lovable.app-1778919923658.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bde90753-d076-4875-8cb0-c66951b77de5/id-preview-25e3598f--52fe2be1-9e4b-474c-bdfb-752bc33d90cc.lovable.app-1778919923658.png" },
     ],
     links: [
       {
