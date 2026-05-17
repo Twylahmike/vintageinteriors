@@ -21,6 +21,15 @@ import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminReviewsRouteImport } from './routes/admin.reviews'
 import { Route as AdminProductsRouteImport } from './routes/admin.products'
 import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
+import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
+import { Route as AdminAnnouncementsRouteImport } from './routes/admin.announcements'
+import { Route as AdminGiftingRouteImport } from './routes/admin.gifting'
+import { Route as AdminDeliveryRouteImport } from './routes/admin.delivery'
+import { Route as AdminBiSalesRouteImport } from './routes/admin.bi.sales'
+import { Route as AdminBiFinancialRouteImport } from './routes/admin.bi.financial'
+import { Route as AdminBiMarketingRouteImport } from './routes/admin.bi.marketing'
+import { Route as AdminBiSupportRouteImport } from './routes/admin.bi.support'
+import { Route as AdminBiOperationsRouteImport } from './routes/admin.bi.operations'
 
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
@@ -82,6 +91,51 @@ const AdminGalleryRoute = AdminGalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCategoriesRoute = AdminCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAnnouncementsRoute = AdminAnnouncementsRouteImport.update({
+  id: '/announcements',
+  path: '/announcements',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGiftingRoute = AdminGiftingRouteImport.update({
+  id: '/gifting',
+  path: '/gifting',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDeliveryRoute = AdminDeliveryRouteImport.update({
+  id: '/delivery',
+  path: '/delivery',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBiSalesRoute = AdminBiSalesRouteImport.update({
+  id: '/bi/sales',
+  path: '/bi/sales',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBiFinancialRoute = AdminBiFinancialRouteImport.update({
+  id: '/bi/financial',
+  path: '/bi/financial',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBiMarketingRoute = AdminBiMarketingRouteImport.update({
+  id: '/bi/marketing',
+  path: '/bi/marketing',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBiSupportRoute = AdminBiSupportRouteImport.update({
+  id: '/bi/support',
+  path: '/bi/support',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBiOperationsRoute = AdminBiOperationsRouteImport.update({
+  id: '/bi/operations',
+  path: '/bi/operations',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -95,6 +149,15 @@ export interface FileRoutesByFullPath {
   '/admin/products': typeof AdminProductsRoute
   '/admin/reviews': typeof AdminReviewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/gifting': typeof AdminGiftingRoute
+  '/admin/delivery': typeof AdminDeliveryRoute
+  '/admin/bi/sales': typeof AdminBiSalesRoute
+  '/admin/bi/financial': typeof AdminBiFinancialRoute
+  '/admin/bi/marketing': typeof AdminBiMarketingRoute
+  '/admin/bi/support': typeof AdminBiSupportRoute
+  '/admin/bi/operations': typeof AdminBiOperationsRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -108,6 +171,15 @@ export interface FileRoutesByTo {
   '/admin/products': typeof AdminProductsRoute
   '/admin/reviews': typeof AdminReviewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/gifting': typeof AdminGiftingRoute
+  '/admin/delivery': typeof AdminDeliveryRoute
+  '/admin/bi/sales': typeof AdminBiSalesRoute
+  '/admin/bi/financial': typeof AdminBiFinancialRoute
+  '/admin/bi/marketing': typeof AdminBiMarketingRoute
+  '/admin/bi/support': typeof AdminBiSupportRoute
+  '/admin/bi/operations': typeof AdminBiOperationsRoute
   '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
@@ -123,6 +195,15 @@ export interface FileRoutesById {
   '/admin/products': typeof AdminProductsRoute
   '/admin/reviews': typeof AdminReviewsRoute
   '/admin/settings': typeof AdminSettingsRoute
+  '/admin/categories': typeof AdminCategoriesRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/gifting': typeof AdminGiftingRoute
+  '/admin/delivery': typeof AdminDeliveryRoute
+  '/admin/bi/sales': typeof AdminBiSalesRoute
+  '/admin/bi/financial': typeof AdminBiFinancialRoute
+  '/admin/bi/marketing': typeof AdminBiMarketingRoute
+  '/admin/bi/support': typeof AdminBiSupportRoute
+  '/admin/bi/operations': typeof AdminBiOperationsRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -139,6 +220,15 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/reviews'
     | '/admin/settings'
+    | '/admin/categories'
+    | '/admin/announcements'
+    | '/admin/gifting'
+    | '/admin/delivery'
+    | '/admin/bi/sales'
+    | '/admin/bi/financial'
+    | '/admin/bi/marketing'
+    | '/admin/bi/support'
+    | '/admin/bi/operations'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -152,6 +242,15 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/reviews'
     | '/admin/settings'
+    | '/admin/categories'
+    | '/admin/announcements'
+    | '/admin/gifting'
+    | '/admin/delivery'
+    | '/admin/bi/sales'
+    | '/admin/bi/financial'
+    | '/admin/bi/marketing'
+    | '/admin/bi/support'
+    | '/admin/bi/operations'
     | '/admin'
   id:
     | '__root__'
@@ -166,6 +265,15 @@ export interface FileRouteTypes {
     | '/admin/products'
     | '/admin/reviews'
     | '/admin/settings'
+    | '/admin/categories'
+    | '/admin/announcements'
+    | '/admin/gifting'
+    | '/admin/delivery'
+    | '/admin/bi/sales'
+    | '/admin/bi/financial'
+    | '/admin/bi/marketing'
+    | '/admin/bi/support'
+    | '/admin/bi/operations'
     | '/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -265,6 +373,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminGalleryRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/categories': {
+      id: '/admin/categories'
+      path: '/categories'
+      fullPath: '/admin/categories'
+      preLoaderRoute: typeof AdminCategoriesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/announcements': {
+      id: '/admin/announcements'
+      path: '/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AdminAnnouncementsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/gifting': {
+      id: '/admin/gifting'
+      path: '/gifting'
+      fullPath: '/admin/gifting'
+      preLoaderRoute: typeof AdminGiftingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/delivery': {
+      id: '/admin/delivery'
+      path: '/delivery'
+      fullPath: '/admin/delivery'
+      preLoaderRoute: typeof AdminDeliveryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/bi/sales': {
+      id: '/admin/bi/sales'
+      path: '/bi/sales'
+      fullPath: '/admin/bi/sales'
+      preLoaderRoute: typeof AdminBiSalesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/bi/financial': {
+      id: '/admin/bi/financial'
+      path: '/bi/financial'
+      fullPath: '/admin/bi/financial'
+      preLoaderRoute: typeof AdminBiFinancialRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/bi/marketing': {
+      id: '/admin/bi/marketing'
+      path: '/bi/marketing'
+      fullPath: '/admin/bi/marketing'
+      preLoaderRoute: typeof AdminBiMarketingRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/bi/support': {
+      id: '/admin/bi/support'
+      path: '/bi/support'
+      fullPath: '/admin/bi/support'
+      preLoaderRoute: typeof AdminBiSupportRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/bi/operations': {
+      id: '/admin/bi/operations'
+      path: '/bi/operations'
+      fullPath: '/admin/bi/operations'
+      preLoaderRoute: typeof AdminBiOperationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
@@ -273,6 +444,15 @@ interface AdminRouteChildren {
   AdminProductsRoute: typeof AdminProductsRoute
   AdminReviewsRoute: typeof AdminReviewsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminCategoriesRoute: typeof AdminCategoriesRoute
+  AdminAnnouncementsRoute: typeof AdminAnnouncementsRoute
+  AdminGiftingRoute: typeof AdminGiftingRoute
+  AdminDeliveryRoute: typeof AdminDeliveryRoute
+  AdminBiSalesRoute: typeof AdminBiSalesRoute
+  AdminBiFinancialRoute: typeof AdminBiFinancialRoute
+  AdminBiMarketingRoute: typeof AdminBiMarketingRoute
+  AdminBiSupportRoute: typeof AdminBiSupportRoute
+  AdminBiOperationsRoute: typeof AdminBiOperationsRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -281,6 +461,15 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminProductsRoute: AdminProductsRoute,
   AdminReviewsRoute: AdminReviewsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
+  AdminCategoriesRoute: AdminCategoriesRoute,
+  AdminAnnouncementsRoute: AdminAnnouncementsRoute,
+  AdminGiftingRoute: AdminGiftingRoute,
+  AdminDeliveryRoute: AdminDeliveryRoute,
+  AdminBiSalesRoute: AdminBiSalesRoute,
+  AdminBiFinancialRoute: AdminBiFinancialRoute,
+  AdminBiMarketingRoute: AdminBiMarketingRoute,
+  AdminBiSupportRoute: AdminBiSupportRoute,
+  AdminBiOperationsRoute: AdminBiOperationsRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
