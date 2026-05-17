@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/admin/bi/sales")({
+export const Route = createFileRoute("/admin/bisales")({
   component: SalesBI,
 });
 
