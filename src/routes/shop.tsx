@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { z } from "zod";
-import { X, MessageCircle } from "lucide-react";
+import { X, MessageCircle, Search } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ProductCard, type Product } from "@/components/ProductCard";
 import { SafeImage } from "@/components/SafeImage";
