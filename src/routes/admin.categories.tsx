@@ -15,7 +15,7 @@ type Category = {
   visible: boolean;
 };
 
-export default function AdminCategories() {
+function AdminCategories() {
   const [cats, setCats] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
@@ -83,7 +83,6 @@ export default function AdminCategories() {
       <h1 className="font-serif text-3xl text-ivory mb-1">Categories</h1>
       <p className="text-cream/60 text-sm mb-8">Manage product categories shown on the shop page</p>
 
-      {/* Add form */}
       <div className="bg-burgundy rounded-xl border border-gold-soft p-5 mb-8">
         <h2 className="text-gold font-semibold mb-4">Add New Category</h2>
         <div className="flex gap-3 flex-wrap">
@@ -110,7 +109,6 @@ export default function AdminCategories() {
         </div>
       </div>
 
-      {/* List */}
       <div className="space-y-2">
         {loading ? (
           <p className="text-cream/50 text-sm">Loading...</p>
