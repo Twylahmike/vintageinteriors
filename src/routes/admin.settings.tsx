@@ -9,6 +9,9 @@ export const Route = createFileRoute("/admin/settings")({
 });
 
 const FIELDS = [
+  { key: "announcement_text", label: "📣 Announcement bar text" },
+  { key: "announcement_visible", label: "Show announcement bar? (true / false)" },
+  { key: "announcement_bg", label: "Announcement bar background (hex, e.g. #3b0a0a)" },
   { key: "whatsapp_number", label: "WhatsApp number (with country code, no +)" },
   { key: "business_hours", label: "Business hours" },
   { key: "location", label: "Location" },

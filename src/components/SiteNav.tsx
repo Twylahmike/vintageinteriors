@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 
 const links = [
   { to: "/", label: "Home" },
@@ -15,6 +16,7 @@ export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -30,10 +32,10 @@ export function SiteNav() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-          scrolled ? "bg-[#0f0f0f] shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "bg-brand"
+        className={`fixed left-0 right-0 z-50 border-b transition-all duration-300 ${
+          scrolled ? "bg-[var(--color-brand-surface)] shadow-[0_4px_24px_rgba(0,0,0,0.6)]" : "bg-brand"
         }`}
-        style={{ borderBottomColor: "rgba(184,149,42,0.3)" }}
+        style={{ borderBottomColor: "rgba(184,149,42,0.3)", top: "var(--ann-h, 0px)" }}
       >
         <div className="container-page flex h-16 items-center justify-between">
           <Link to="/" className="font-serif text-2xl font-semibold text-gold tracking-wide">
@@ -54,14 +56,30 @@ export function SiteNav() {
                 </Link>
               );
             })}
+            <button
+              onClick={toggle}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              className="ml-2 inline-flex h-9 w-9 items-center justify-center rounded-full border border-gold-soft text-gold hover:bg-gold/10 transition"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
           </nav>
-          <button
-            className="md:hidden text-gold p-2"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="md:hidden flex items-center gap-1">
+            <button
+              onClick={toggle}
+              aria-label="Toggle theme"
+              className="text-gold p-2"
+            >
+              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
+            <button
+              className="text-gold p-2"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </header>
 
