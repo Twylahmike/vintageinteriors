@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/admin/bi/operations")({
+export const Route = createFileRoute("/admin/bioperations")({
   component: () => <BIPage title="Operations" desc="Inventory overview, hidden products, and low stock alerts." />,
 });
 
