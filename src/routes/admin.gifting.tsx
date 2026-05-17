@@ -10,7 +10,7 @@ export const Route = createFileRoute("/admin/gifting")({
 type Occasion = { id: string; name: string; emoji: string; description: string; is_visible: boolean; display_order: number };
 type GiftRequest = { id: string; name: string; phone: string; occasion: string; budget_range: string; message: string; status: string; created_at: string };
 
-export default function AdminGifting() {
+function AdminGifting() {
   const [tab, setTab] = useState<"occasions" | "requests">("occasions");
   const [occasions, setOccasions] = useState<Occasion[]>([]);
   const [requests, setRequests] = useState<GiftRequest[]>([]);
@@ -79,7 +79,6 @@ export default function AdminGifting() {
       <h1 className="font-serif text-3xl text-ivory mb-1">Gifting</h1>
       <p className="text-cream/60 text-sm mb-6">Manage gift occasions and customer gift requests</p>
 
-      {/* Tabs */}
       <div className="flex gap-2 mb-8">
         {(["occasions", "requests"] as const).map((t) => (
           <button key={t} onClick={() => setTab(t)}
@@ -96,7 +95,6 @@ export default function AdminGifting() {
 
       {tab === "occasions" && (
         <div className="space-y-6">
-          {/* Add form */}
           <div className="bg-burgundy rounded-xl border border-gold-soft p-5">
             <h2 className="text-gold font-semibold mb-4">Add Occasion</h2>
             <div className="flex gap-3 flex-wrap mb-3">
@@ -112,7 +110,6 @@ export default function AdminGifting() {
             </button>
           </div>
 
-          {/* List */}
           <div className="space-y-2">
             {occasions.map((o) => (
               <div key={o.id} className="flex items-center gap-3 bg-burgundy border border-gold-soft rounded-xl px-4 py-3">
