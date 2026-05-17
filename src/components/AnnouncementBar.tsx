@@ -1,48 +1,61 @@
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { useSettings } from "@/hooks/use-supabase-table";
+import { supabase } from "@/integrations/supabase/client";
 
 const DISMISS_KEY = "vf_ann_dismissed";
 
 export function AnnouncementBar() {
-  const { settings } = useSettings();
-  const text = settings.announcement_text || "";
-  const visible = (settings.announcement_visible || "true") === "true";
-  const bg = settings.announcement_bg || "#3b0a0a";
-
+  const [ann, setAnn] = useState<{ text: string; background_color: string; visible: boolean } | null>(null);
   const [dismissed, setDismissed] = useState(false);
 
-  // re-show if admin changes the text
-  useEffect(() => {
-    const last = typeof window !== "undefined" ? localStorage.getItem(DISMISS_KEY) : null;
-    setDismissed(last === text && !!text);
-  }, [text]);
+  const load = async () => {
+    const { data } = await supabase
+      .from("announcements")
+      .select("*")
+      .eq("visible", true)
+      .order("created_at", { ascending: false })
+      .limit(1)
+      .single();
+    if (data) {
+      setAnn(data);
+      const last = typeof window !== "undefined" ? localStorage.getItem(DISMISS_KEY) : null;
+      setDismissed(last === data.text);
+    }
+  };
 
-  // expose its height for layout offsets
+  useEffect(() => {
+    load();
+    const channel = supabase
+      .channel("announcements")
+      .on("postgres_changes", { event: "*", schema: "public", table: "announcements" }, load)
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
-    if (visible && text && !dismissed) {
+    if (ann && ann.visible && ann.text && !dismissed) {
       root.style.setProperty("--ann-h", "36px");
       root.dataset.ann = "1";
     } else {
       root.style.setProperty("--ann-h", "0px");
       delete root.dataset.ann;
     }
-  }, [visible, text, dismissed]);
+  }, [ann, dismissed]);
 
-  if (!visible || !text || dismissed) return null;
+  if (!ann || !ann.visible || !ann.text || dismissed) return null;
 
   return (
     <div
       className="fixed top-0 left-0 right-0 z-[60] h-9 flex items-center justify-center text-xs md:text-sm font-medium tracking-wide text-ivory border-b border-gold-soft px-10"
-      style={{ backgroundColor: bg }}
+      style={{ backgroundColor: ann.background_color || "#3b0a0a" }}
       role="status"
     >
-      <span className="truncate">{text}</span>
+      <span className="truncate">{ann.text}</span>
       <button
         onClick={() => {
           setDismissed(true);
-          try { localStorage.setItem(DISMISS_KEY, text); } catch {}
+          try { localStorage.setItem(DISMISS_KEY, ann.text); } catch {}
         }}
         aria-label="Dismiss announcement"
         className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gold hover:text-[var(--color-gold-hover)]"
