@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Award, Truck, Globe, Pencil, MessageCircle, Star } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Reveal } from "@/components/Reveal";
@@ -33,6 +33,37 @@ interface Category {
   slug: string;
   icon: string;
   description: string;
+}
+
+function HeroImages() {
+  const { data: heroImages } = useSupabaseTable<{ id: string; image_url: string }>({
+    table: "hero_images",
+    order: { column: "display_order", ascending: true },
+  });
+
+  const images = heroImages.length > 0 ? heroImages : [{ id: "default", image_url: heroImg }];
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const t = setInterval(() => setCurrent((c) => (c + 1) % images.length), 5000);
+    return () => clearInterval(t);
+  }, [images.length]);
+
+  return (
+    <>
+      {images.map((img, i) => (
+        <img
+          key={img.id}
+          src={img.image_url}
+          alt=""
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+            i === current ? "opacity-35 animate-ken-burns" : "opacity-0"
+          }`}
+        />
+      ))}
+    </>
+  );
 }
 
 function Home() {
@@ -78,12 +109,7 @@ function Home() {
       {/* HERO */}
       <section className="relative h-screen min-h-[640px] -mt-16 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroImg}
-            alt=""
-            className="h-full w-full object-cover animate-ken-burns"
-            style={{ opacity: 0.35 }}
-          />
+          <HeroImages />
           <div className="absolute inset-0 bg-gradient-to-b from-brand via-transparent to-brand" />
         </div>
         <div className="relative z-10 container-page text-center max-w-3xl">
@@ -111,7 +137,7 @@ function Home() {
               >
                 Shop Now
               </Link>
-              <a
+              
                 href={waLink(ctaMsg, number)}
                 target="_blank"
                 rel="noreferrer"
