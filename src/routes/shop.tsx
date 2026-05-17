@@ -47,12 +47,25 @@ function Shop() {
     order: { column: "created_at", ascending: false },
   });
 
+  const [query, setQuery] = useState("");
+
   const filtered = useMemo(() => {
-    if (active === "all") return products;
-    const cat = categories.find((c) => c.slug === active);
-    if (!cat) return products;
-    return products.filter((p) => p.category === cat.name);
-  }, [products, categories, active]);
+    let list = products;
+    if (active !== "all") {
+      const cat = categories.find((c) => c.slug === active);
+      if (cat) list = list.filter((p) => p.category === cat.name);
+    }
+    const q = query.trim().toLowerCase();
+    if (q) {
+      list = list.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          (p.description || "").toLowerCase().includes(q) ||
+          (p.category || "").toLowerCase().includes(q),
+      );
+    }
+    return list;
+  }, [products, categories, active, query]);
 
   const [selected, setSelected] = useState<Product | null>(null);
 
