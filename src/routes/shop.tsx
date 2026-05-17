@@ -82,24 +82,46 @@ function Shop() {
 
       {/* Filter bar */}
       <div className="sticky top-16 z-30 bg-surface border-b border-gold-soft">
-        <div className="container-page py-4 overflow-x-auto">
-          <div className="flex gap-2 min-w-max">
-            {[{ name: "All", slug: "all" }, ...categories].map((c) => {
-              const isActive = c.slug === active;
-              return (
-                <button
-                  key={c.slug}
-                  onClick={() => navigate({ search: c.slug === "all" ? {} : { category: c.slug } })}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition whitespace-nowrap ${
-                    isActive
-                      ? "bg-gold text-[#080808]"
-                      : "border border-gold text-ivory hover:bg-gold/10"
-                  }`}
-                >
-                  {c.name}
-                </button>
-              );
-            })}
+        <div className="container-page py-4 space-y-3">
+          <div className="relative max-w-md mx-auto">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream" />
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search by name or category..."
+              className="w-full h-10 pl-10 pr-10 rounded-full bg-[#1a0404] border border-gold-soft text-ivory text-sm placeholder:text-cream focus:outline-none focus:border-gold transition"
+              aria-label="Search products"
+            />
+            {query && (
+              <button
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-cream hover:text-gold"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+          <div className="overflow-x-auto">
+            <div className="flex gap-2 min-w-max">
+              {[{ name: "All", slug: "all" }, ...categories].map((c) => {
+                const isActive = c.slug === active;
+                return (
+                  <button
+                    key={c.slug}
+                    onClick={() => navigate({ search: c.slug === "all" ? {} : { category: c.slug } })}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition whitespace-nowrap ${
+                      isActive
+                        ? "bg-gold text-[#080808]"
+                        : "border border-gold text-ivory hover:bg-gold/10"
+                    }`}
+                  >
+                    {c.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -115,12 +137,19 @@ function Shop() {
           ) : filtered.length === 0 ? (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">🛋️</div>
-              <p className="text-cream mb-6">No pieces in this category yet — check back soon!</p>
+              <p className="text-cream mb-6">
+                {query
+                  ? `No products found for "${query}"`
+                  : "No pieces in this category yet — check back soon!"}
+              </p>
               <button
-                onClick={() => navigate({ search: {} })}
+                onClick={() => {
+                  setQuery("");
+                  navigate({ search: {} });
+                }}
                 className="inline-flex h-11 px-5 rounded-lg bg-gold text-[#080808] font-bold items-center"
               >
-                Browse All
+                {query ? "Clear Search" : "Browse All"}
               </button>
             </div>
           ) : (
