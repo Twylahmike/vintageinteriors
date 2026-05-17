@@ -35,15 +35,15 @@ function Shell() {
   ];
 
   const bi = [
-    { to: "/admin/bi/sales", label: "Sales", icon: TrendingUp },
-    { to: "/admin/bi/financial", label: "Financial", icon: DollarSign },
-    { to: "/admin/bi/marketing", label: "Marketing", icon: BarChart3 },
-    { to: "/admin/bi/support", label: "Support", icon: HeadphonesIcon },
-    { to: "/admin/bi/operations", label: "Operations", icon: Cog },
+    { to: "/admin/bisales", label: "Sales", icon: TrendingUp },
+    { to: "/admin/bifinancial", label: "Financial", icon: DollarSign },
+    { to: "/admin/bimarketing", label: "Marketing", icon: BarChart3 },
+    { to: "/admin/bisupport", label: "Support", icon: HeadphonesIcon },
+    { to: "/admin/bioperations", label: "Operations", icon: Cog },
   ];
 
   const NavLink = ({ l }: { l: typeof ops[0] }) => {
-    const active = l.exact ? path === l.to : path.startsWith(l.to);
+    const active = l.exact ? path === l.to : path === l.to || path.startsWith(l.to + "/");
     return (
       <Link
         key={l.to}
