@@ -22,11 +22,11 @@ import { Route as AdminCategoriesRouteImport } from './routes/admin.categories'
 import { Route as AdminAnnouncementsRouteImport } from './routes/admin.announcements'
 import { Route as AdminGiftingRouteImport } from './routes/admin.gifting'
 import { Route as AdminDeliveryRouteImport } from './routes/admin.delivery'
-import { Route as AdminBiSalesRouteImport } from './routes/admin.bi.sales'
-import { Route as AdminBiFinancialRouteImport } from './routes/admin.bi.financial'
-import { Route as AdminBiMarketingRouteImport } from './routes/admin.bi.marketing'
-import { Route as AdminBiSupportRouteImport } from './routes/admin.bi.support'
-import { Route as AdminBiOperationsRouteImport } from './routes/admin.bi.operations'
+import { Route as AdminBiSalesRouteImport } from './routes/admin.bisales'
+import { Route as AdminBiFinancialRouteImport } from './routes/admin.bifinancial'
+import { Route as AdminBiMarketingRouteImport } from './routes/admin.bimarketing'
+import { Route as AdminBiSupportRouteImport } from './routes/admin.bisupport'
+import { Route as AdminBiOperationsRouteImport } from './routes/admin.bioperations'
 
 const ShopRoute = ShopRouteImport.update({ id: '/shop', path: '/shop', getParentRoute: () => rootRouteImport } as any)
 const ReviewsRoute = ReviewsRouteImport.update({ id: '/reviews', path: '/reviews', getParentRoute: () => rootRouteImport } as any)
@@ -44,11 +44,11 @@ const AdminCategoriesRoute = AdminCategoriesRouteImport.update({ id: '/categorie
 const AdminAnnouncementsRoute = AdminAnnouncementsRouteImport.update({ id: '/announcements', path: '/announcements', getParentRoute: () => AdminRoute } as any)
 const AdminGiftingRoute = AdminGiftingRouteImport.update({ id: '/gifting', path: '/gifting', getParentRoute: () => AdminRoute } as any)
 const AdminDeliveryRoute = AdminDeliveryRouteImport.update({ id: '/delivery', path: '/delivery', getParentRoute: () => AdminRoute } as any)
-const AdminBiSalesRoute = AdminBiSalesRouteImport.update({ id: '/bi/sales', path: '/bi/sales', getParentRoute: () => AdminRoute } as any)
-const AdminBiFinancialRoute = AdminBiFinancialRouteImport.update({ id: '/bi/financial', path: '/bi/financial', getParentRoute: () => AdminRoute } as any)
-const AdminBiMarketingRoute = AdminBiMarketingRouteImport.update({ id: '/bi/marketing', path: '/bi/marketing', getParentRoute: () => AdminRoute } as any)
-const AdminBiSupportRoute = AdminBiSupportRouteImport.update({ id: '/bi/support', path: '/bi/support', getParentRoute: () => AdminRoute } as any)
-const AdminBiOperationsRoute = AdminBiOperationsRouteImport.update({ id: '/bi/operations', path: '/bi/operations', getParentRoute: () => AdminRoute } as any)
+const AdminBiSalesRoute = AdminBiSalesRouteImport.update({ id: '/bisales', path: '/bisales', getParentRoute: () => AdminRoute } as any)
+const AdminBiFinancialRoute = AdminBiFinancialRouteImport.update({ id: '/bifinancial', path: '/bifinancial', getParentRoute: () => AdminRoute } as any)
+const AdminBiMarketingRoute = AdminBiMarketingRouteImport.update({ id: '/bimarketing', path: '/bimarketing', getParentRoute: () => AdminRoute } as any)
+const AdminBiSupportRoute = AdminBiSupportRouteImport.update({ id: '/bisupport', path: '/bisupport', getParentRoute: () => AdminRoute } as any)
+const AdminBiOperationsRoute = AdminBiOperationsRouteImport.update({ id: '/bioperations', path: '/bioperations', getParentRoute: () => AdminRoute } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,11 +67,11 @@ export interface FileRoutesByFullPath {
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/gifting': typeof AdminGiftingRoute
   '/admin/delivery': typeof AdminDeliveryRoute
-  '/admin/bi/sales': typeof AdminBiSalesRoute
-  '/admin/bi/financial': typeof AdminBiFinancialRoute
-  '/admin/bi/marketing': typeof AdminBiMarketingRoute
-  '/admin/bi/support': typeof AdminBiSupportRoute
-  '/admin/bi/operations': typeof AdminBiOperationsRoute
+  '/admin/bisales': typeof AdminBiSalesRoute
+  '/admin/bifinancial': typeof AdminBiFinancialRoute
+  '/admin/bimarketing': typeof AdminBiMarketingRoute
+  '/admin/bisupport': typeof AdminBiSupportRoute
+  '/admin/bioperations': typeof AdminBiOperationsRoute
 }
 
 export interface FileRoutesByTo {
@@ -90,11 +90,11 @@ export interface FileRoutesByTo {
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/gifting': typeof AdminGiftingRoute
   '/admin/delivery': typeof AdminDeliveryRoute
-  '/admin/bi/sales': typeof AdminBiSalesRoute
-  '/admin/bi/financial': typeof AdminBiFinancialRoute
-  '/admin/bi/marketing': typeof AdminBiMarketingRoute
-  '/admin/bi/support': typeof AdminBiSupportRoute
-  '/admin/bi/operations': typeof AdminBiOperationsRoute
+  '/admin/bisales': typeof AdminBiSalesRoute
+  '/admin/bifinancial': typeof AdminBiFinancialRoute
+  '/admin/bimarketing': typeof AdminBiMarketingRoute
+  '/admin/bisupport': typeof AdminBiSupportRoute
+  '/admin/bioperations': typeof AdminBiOperationsRoute
 }
 
 export interface FileRoutesById {
@@ -115,11 +115,11 @@ export interface FileRoutesById {
   '/admin/announcements': typeof AdminAnnouncementsRoute
   '/admin/gifting': typeof AdminGiftingRoute
   '/admin/delivery': typeof AdminDeliveryRoute
-  '/admin/bi/sales': typeof AdminBiSalesRoute
-  '/admin/bi/financial': typeof AdminBiFinancialRoute
-  '/admin/bi/marketing': typeof AdminBiMarketingRoute
-  '/admin/bi/support': typeof AdminBiSupportRoute
-  '/admin/bi/operations': typeof AdminBiOperationsRoute
+  '/admin/bisales': typeof AdminBiSalesRoute
+  '/admin/bifinancial': typeof AdminBiFinancialRoute
+  '/admin/bimarketing': typeof AdminBiMarketingRoute
+  '/admin/bisupport': typeof AdminBiSupportRoute
+  '/admin/bioperations': typeof AdminBiOperationsRoute
 }
 
 export interface FileRouteTypes {
@@ -128,21 +128,21 @@ export interface FileRouteTypes {
     | '/' | '/about' | '/admin' | '/contact' | '/delivery' | '/reviews' | '/shop'
     | '/admin/' | '/admin/gallery' | '/admin/products' | '/admin/reviews' | '/admin/settings'
     | '/admin/categories' | '/admin/announcements' | '/admin/gifting' | '/admin/delivery'
-    | '/admin/bi/sales' | '/admin/bi/financial' | '/admin/bi/marketing'
-    | '/admin/bi/support' | '/admin/bi/operations'
+    | '/admin/bisales' | '/admin/bifinancial' | '/admin/bimarketing'
+    | '/admin/bisupport' | '/admin/bioperations'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/' | '/about' | '/contact' | '/delivery' | '/reviews' | '/shop'
     | '/admin' | '/admin/gallery' | '/admin/products' | '/admin/reviews' | '/admin/settings'
     | '/admin/categories' | '/admin/announcements' | '/admin/gifting' | '/admin/delivery'
-    | '/admin/bi/sales' | '/admin/bi/financial' | '/admin/bi/marketing'
-    | '/admin/bi/support' | '/admin/bi/operations'
+    | '/admin/bisales' | '/admin/bifinancial' | '/admin/bimarketing'
+    | '/admin/bisupport' | '/admin/bioperations'
   id:
     | '__root__' | '/' | '/about' | '/admin' | '/contact' | '/delivery' | '/reviews' | '/shop'
     | '/admin/' | '/admin/gallery' | '/admin/products' | '/admin/reviews' | '/admin/settings'
     | '/admin/categories' | '/admin/announcements' | '/admin/gifting' | '/admin/delivery'
-    | '/admin/bi/sales' | '/admin/bi/financial' | '/admin/bi/marketing'
-    | '/admin/bi/support' | '/admin/bi/operations'
+    | '/admin/bisales' | '/admin/bifinancial' | '/admin/bimarketing'
+    | '/admin/bisupport' | '/admin/bioperations'
   fileRoutesById: FileRoutesById
 }
 
@@ -174,11 +174,11 @@ declare module '@tanstack/react-router' {
     '/admin/announcements': { id: '/admin/announcements'; path: '/announcements'; fullPath: '/admin/announcements'; preLoaderRoute: typeof AdminAnnouncementsRouteImport; parentRoute: typeof AdminRoute }
     '/admin/gifting': { id: '/admin/gifting'; path: '/gifting'; fullPath: '/admin/gifting'; preLoaderRoute: typeof AdminGiftingRouteImport; parentRoute: typeof AdminRoute }
     '/admin/delivery': { id: '/admin/delivery'; path: '/delivery'; fullPath: '/admin/delivery'; preLoaderRoute: typeof AdminDeliveryRouteImport; parentRoute: typeof AdminRoute }
-    '/admin/bi/sales': { id: '/admin/bi/sales'; path: '/bi/sales'; fullPath: '/admin/bi/sales'; preLoaderRoute: typeof AdminBiSalesRouteImport; parentRoute: typeof AdminRoute }
-    '/admin/bi/financial': { id: '/admin/bi/financial'; path: '/bi/financial'; fullPath: '/admin/bi/financial'; preLoaderRoute: typeof AdminBiFinancialRouteImport; parentRoute: typeof AdminRoute }
-    '/admin/bi/marketing': { id: '/admin/bi/marketing'; path: '/bi/marketing'; fullPath: '/admin/bi/marketing'; preLoaderRoute: typeof AdminBiMarketingRouteImport; parentRoute: typeof AdminRoute }
-    '/admin/bi/support': { id: '/admin/bi/support'; path: '/bi/support'; fullPath: '/admin/bi/support'; preLoaderRoute: typeof AdminBiSupportRouteImport; parentRoute: typeof AdminRoute }
-    '/admin/bi/operations': { id: '/admin/bi/operations'; path: '/bi/operations'; fullPath: '/admin/bi/operations'; preLoaderRoute: typeof AdminBiOperationsRouteImport; parentRoute: typeof AdminRoute }
+    '/admin/bisales': { id: '/admin/bisales'; path: '/bisales'; fullPath: '/admin/bisales'; preLoaderRoute: typeof AdminBiSalesRouteImport; parentRoute: typeof AdminRoute }
+    '/admin/bifinancial': { id: '/admin/bifinancial'; path: '/bifinancial'; fullPath: '/admin/bifinancial'; preLoaderRoute: typeof AdminBiFinancialRouteImport; parentRoute: typeof AdminRoute }
+    '/admin/bimarketing': { id: '/admin/bimarketing'; path: '/bimarketing'; fullPath: '/admin/bimarketing'; preLoaderRoute: typeof AdminBiMarketingRouteImport; parentRoute: typeof AdminRoute }
+    '/admin/bisupport': { id: '/admin/bisupport'; path: '/bisupport'; fullPath: '/admin/bisupport'; preLoaderRoute: typeof AdminBiSupportRouteImport; parentRoute: typeof AdminRoute }
+    '/admin/bioperations': { id: '/admin/bioperations'; path: '/bioperations'; fullPath: '/admin/bioperations'; preLoaderRoute: typeof AdminBiOperationsRouteImport; parentRoute: typeof AdminRoute }
   }
 }
 
