@@ -81,7 +81,10 @@ function Shop() {
       </section>
 
       {/* Filter bar */}
-      <div className="sticky top-16 z-30 bg-surface border-b border-gold-soft">
+      <div
+        className="sticky z-30 bg-surface border-b border-gold-soft"
+        style={{ top: "calc(4rem + var(--ann-h, 0px))" }}
+      >
         <div className="container-page py-4 space-y-3">
           <div className="relative max-w-md mx-auto">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-cream" />
