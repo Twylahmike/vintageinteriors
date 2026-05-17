@@ -10,7 +10,7 @@ export const Route = createFileRoute("/admin/delivery")({
 type Zone = { id: string; zone_name: string; fee: number; delivery_time: string; is_free: boolean; is_active: boolean; color_hex: string };
 type Area = { id: string; zone_id: string; area_name: string; aliases: string[] };
 
-export default function AdminDelivery() {
+function AdminDelivery() {
   const [zones, setZones] = useState<Zone[]>([]);
   const [areas, setAreas] = useState<Area[]>([]);
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -28,7 +28,6 @@ export default function AdminDelivery() {
     ]);
     setZones(z || []);
     setAreas(a || []);
-
     const { data: setting } = await supabase.from("delivery_settings").select("value").eq("key", "free_delivery_threshold").single();
     if (setting) setThreshold(setting.value);
   };
@@ -96,7 +95,6 @@ export default function AdminDelivery() {
       <h1 className="font-serif text-3xl text-ivory mb-1">Delivery Zones</h1>
       <p className="text-cream/60 text-sm mb-8">Manage zones, areas, and delivery fees shown on the Delivery page</p>
 
-      {/* Free delivery threshold */}
       <div className="bg-burgundy rounded-xl border border-gold-soft p-5 mb-8">
         <h2 className="text-gold font-semibold mb-3">Free Delivery Threshold</h2>
         <div className="flex gap-3 items-center">
@@ -107,7 +105,6 @@ export default function AdminDelivery() {
         </div>
       </div>
 
-      {/* Add zone */}
       <div className="bg-burgundy rounded-xl border border-gold-soft p-5 mb-8">
         <h2 className="text-gold font-semibold mb-4">Add Zone</h2>
         <div className="grid grid-cols-2 gap-3 mb-3">
@@ -131,7 +128,6 @@ export default function AdminDelivery() {
         </button>
       </div>
 
-      {/* Zone list */}
       <div className="space-y-3">
         {zones.map((zone) => {
           const zoneAreas = areas.filter((a) => a.zone_id === zone.id);
