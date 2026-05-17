@@ -6,7 +6,7 @@ export const Route = createFileRoute("/admin/announcements")({
   component: AdminAnnouncements,
 });
 
-export default function AdminAnnouncements() {
+function AdminAnnouncements() {
   const [text, setText] = useState("");
   const [bg, setBg] = useState("#B8952A");
   const [visible, setVisible] = useState(true);
@@ -41,18 +41,14 @@ export default function AdminAnnouncements() {
           {toast}
         </div>
       )}
-
       <h1 className="font-serif text-3xl text-ivory mb-1">Announcement Bar</h1>
       <p className="text-cream/60 text-sm mb-8">Controls the banner shown at the top of every page</p>
-
-      {/* Preview */}
       <div
         className="w-full rounded-xl px-4 py-3 text-center text-sm font-medium mb-8 transition-all"
         style={{ backgroundColor: bg, color: "#080808" }}
       >
         {text || "Your announcement will appear here"}
       </div>
-
       <div className="bg-burgundy rounded-xl border border-gold-soft p-6 space-y-5">
         <div>
           <label className="text-gold text-sm font-semibold block mb-2">Announcement Text</label>
@@ -64,7 +60,6 @@ export default function AdminAnnouncements() {
             className="w-full rounded-lg bg-[#1a0404] border border-gold-soft text-ivory px-3 py-2 resize-none"
           />
         </div>
-
         <div>
           <label className="text-gold text-sm font-semibold block mb-2">Background Color</label>
           <div className="flex items-center gap-3">
@@ -73,7 +68,6 @@ export default function AdminAnnouncements() {
             <span className="text-ivory text-sm">{bg}</span>
           </div>
         </div>
-
         <div className="flex items-center gap-3">
           <button
             onClick={() => setVisible(!visible)}
@@ -83,7 +77,6 @@ export default function AdminAnnouncements() {
           </button>
           <span className="text-ivory text-sm">{visible ? "Visible on site" : "Hidden"}</span>
         </div>
-
         <button
           onClick={save}
           disabled={saving}
